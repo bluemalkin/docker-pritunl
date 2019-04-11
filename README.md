@@ -1,2 +1,2 @@
 # docker-pritunl
-A Docker image for Pritunl VPN
+:whale: A Docker image for Pritunl VPN
