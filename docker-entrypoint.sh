@@ -30,4 +30,7 @@ cat << EOF > /etc/pritunl.conf
 }
 EOF
 
-exec "${@}"
+exec tail -f /var/log/pritunl.log &
+exec pritunl logs --tail &
+
+echo "> $@" && exec "$@"

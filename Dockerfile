@@ -8,13 +8,10 @@ RUN apt-get update && \
   echo "deb http://repo.pritunl.com/stable/apt stretch main" >  /etc/apt/sources.list.d/pritunl.list && \
   apt-get update && \
   apt-get -y install pritunl || apt-get -f -y install && \
-  rm /var/log/pritunl.log* && \
-  ln -s /dev/stdout /var/log/pritunl.log  && \
   apt-get -y autoremove && \
   rm -rf /var/lib/apt/lists/*
 
-EXPOSE 80/tcp
-EXPOSE 443/tcp
+EXPOSE 80/tcp 443/tcp
 EXPOSE 1194/udp
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
