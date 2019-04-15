@@ -14,6 +14,11 @@ if [ -z "$PRITUNL_BIND_ADDR" ]; then
   PRITUNL_BIND_ADDR="0.0.0.0"
 fi
 
+[ -d /dev/net ] ||
+    mkdir -p /dev/net
+[ -c /dev/net/tun ] ||
+    mknod /dev/net/tun c 10 200
+
 TEMP_PATH=`mktemp -d --suffix _pritunl`
 
 cat << EOF > /etc/pritunl.conf
@@ -26,7 +31,9 @@ cat << EOF > /etc/pritunl.conf
     "bind_addr": "$PRITUNL_BIND_ADDR",
     "www_path": "/usr/share/pritunl/www",
     "local_address_interface": "auto",
-    "port": 443
+    "port": 443,
+    "server_key_path": "/var/lib/pritunl/pritunl.key",
+    "server_cert_path": "/var/lib/pritunl/pritunl.crt"
 }
 EOF
 
