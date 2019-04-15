@@ -18,4 +18,4 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD ["/usr/bin/pritunl", "start", "-c", "/etc/pritunl.conf"]
+CMD /usr/bin/pritunl start -c /etc/pritunl.conf
