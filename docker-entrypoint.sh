@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$PRITUNL_MONGODB_URI" ]; then
-  echo "ERROR: no MONGODB_URI provided"
+  echo "ERROR: no PRITUNL_MONGODB_URI provided"
   exit
 fi
 
